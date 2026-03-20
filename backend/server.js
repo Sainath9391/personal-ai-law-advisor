@@ -12,17 +12,25 @@ const documentRoutes = require("./routes/documentRoutes");
 
 const app = express();
 
-const allowedOrigins = [
+const defaultOrigins = [
   "https://personal-ai-law-advisor.onrender.com",
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "http://127.0.0.1:3000"
 ];
+
+const envOrigins = (process.env.CORS_ORIGINS || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])];
 
 const corsOptions = {
   origin(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
-    return callback(new Error(`CORS blocked for origin: ${origin}`));
+    return callback(null, false);
   },
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -31,7 +39,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -52,6 +59,7 @@ const startServer = async () => {
       console.log(`Server running on port ${PORT}`);
       console.log("GROQ KEY:", process.env.GROQ_API_KEY ? "✅ Loaded" : "❌ Missing");
       console.log("JWT SECRET:", process.env.JWT_SECRET ? "✅ Loaded" : "❌ Missing");
+      console.log("Allowed CORS origins:", allowedOrigins.join(", "));
     });
   } catch (error) {
     console.error("Failed to start server:", error.message);
