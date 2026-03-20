@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function DocumentAnalyzer() {
 
@@ -17,8 +17,8 @@ function DocumentAnalyzer() {
     try {
       setLoading(true);
 
-      const res = await axios.post(
-        "https://personal-ai-law-advisor-backend.onrender.com/api/analyze",
+      const res = await api.post(
+        "/api/analyze",
         formData
       );
 

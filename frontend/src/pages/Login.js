@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 
 function Login(){
 
@@ -26,8 +26,8 @@ e.preventDefault()
 
 try{
 
-const res = await axios.post(
-"https://personal-ai-law-advisor-backend.onrender.com/api/auth/login",
+const res = await api.post(
+"/api/auth/login",
 formData
 )
 

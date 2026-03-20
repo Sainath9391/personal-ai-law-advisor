@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import axios from "axios";
+import api from "../api";
 
 function QueryForm(){
 
@@ -13,8 +13,8 @@ if(!question) return
 const userMsg={type:"user",text:question}
 setMessages(prev=>[...prev,userMsg])
 
-const res=await axios.post(
-"https://personal-ai-law-advisor-backend.onrender.com/api/legal-advice",
+const res=await api.post(
+"/api/chat/ask",
 {question}
 )
 

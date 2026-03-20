@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function Advisor(){
 
@@ -34,8 +34,8 @@ setMessages(prev => [
 
 try{
 
-const res = await axios.post(
-"https://personal-ai-law-advisor-backend.onrender.com/api/chat/ask",
+const res = await api.post(
+"/api/chat/ask",
 {
 question:currentQuestion,
 userId:user?.id

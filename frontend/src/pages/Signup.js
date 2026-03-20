@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 
 function Signup(){
 
@@ -30,8 +30,8 @@ return
 
 try{
 
-const res = await axios.post(
-"https://personal-ai-law-advisor-backend.onrender.com/api/auth/signup",
+const res = await api.post(
+"/api/auth/signup",
 {
 name:formData.name,
 email:formData.email,

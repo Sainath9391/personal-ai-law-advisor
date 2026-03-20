@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function History() {
 
@@ -12,7 +12,7 @@ function History() {
 
   const fetchDocuments = async () => {
     try {
-      const res = await axios.get("https://personal-ai-law-advisor-backend.onrender.com/api/documents");
+      const res = await api.get("/api/documents");
       setDocuments(res.data);
     } catch (err) {
       console.error(err);
