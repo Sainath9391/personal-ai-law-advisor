@@ -59,10 +59,6 @@ if(!isMatch){
 return res.status(400).json({msg:"Invalid credentials"})
 }
 
-if(!process.env.JWT_SECRET){
-return res.status(500).json({msg:"Server configuration error: JWT secret missing"})
-}
-
 const token = jwt.sign(
 
 { id:user._id },
