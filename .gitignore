@@ -1,0 +1,81 @@
+# ======================
+# NODE MODULES
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ======================
+# ENV FILES (IMPORTANT 🔥)
+# ======================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# ======================
+# LOG FILES
+# ======================
+logs/
+*.log
+
+# ======================
+# BUILD FILES
+# ======================
+build/
+dist/
+out/
+
+# ======================
+# OS FILES
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# IDE FILES
+# ======================
+.vscode/
+.idea/
+
+# ======================
+# TEMP FILES
+# ======================
+*.tmp
+*.temp
+*.cache
+
+# ======================
+# UPLOADS (VERY IMPORTANT 🔥)
+# ======================
+uploads/
+server/uploads/
+
+# ======================
+# DATABASE FILES (if local)
+# ======================
+*.sqlite
+*.db
+
+# ======================
+# COVERAGE
+# ======================
+coverage/
+
+# ======================
+# REACT SPECIFIC
+# ======================
+frontend/node_modules/
+frontend/build/
+
+# ======================
+# SERVER SPECIFIC
+# ======================
+server/node_modules/
+
+# ======================
+# MISC
+# ======================
+*.pem
