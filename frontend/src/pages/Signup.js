@@ -31,7 +31,7 @@ return
 try{
 
 const res = await axios.post(
-"http://localhost:5000/api/auth/signup",
+"https://personal-ai-law-advisor-backend.onrender.com/api/auth/signup",
 {
 name:formData.name,
 email:formData.email,

@@ -35,7 +35,7 @@ setMessages(prev => [
 try{
 
 const res = await axios.post(
-"http://localhost:5000/api/chat/ask",
+"https://personal-ai-law-advisor-backend.onrender.com/api/chat/ask",
 {
 question:currentQuestion,
 userId:user?.id

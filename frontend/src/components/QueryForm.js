@@ -14,7 +14,7 @@ const userMsg={type:"user",text:question}
 setMessages(prev=>[...prev,userMsg])
 
 const res=await axios.post(
-"http://localhost:5000/api/legal-advice",
+"https://personal-ai-law-advisor-backend.onrender.com/api/legal-advice",
 {question}
 )
 

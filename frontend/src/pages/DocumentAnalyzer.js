@@ -18,7 +18,7 @@ function DocumentAnalyzer() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/analyze",
+        "https://personal-ai-law-advisor-backend.onrender.com/api/analyze",
         formData
       );
 
