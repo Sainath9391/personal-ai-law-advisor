@@ -52,8 +52,16 @@ app.get("/api/health", (_req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
+const requiredEnvVars = ["MONGO_URI", "JWT_SECRET", "GROQ_API_KEY"];
+const missingEnvVars = requiredEnvVars.filter((key) => !process.env[key]);
+
 const startServer = async () => {
   try {
+    if (missingEnvVars.length > 0) {
+      console.error(`Missing required environment variables: ${missingEnvVars.join(", ")}`);
+      process.exit(1);
+    }
+
     await connectDB();
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
